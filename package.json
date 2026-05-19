@@ -2,7 +2,7 @@
   "name": "irongrd-site",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://MarcBernstein0.github.io/irongrid-site",
+  "homepage": "https://MarcBernstein0.github.io/irongrid-site/",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
