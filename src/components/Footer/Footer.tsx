@@ -16,7 +16,6 @@ const footerCols: FooterCol[] = [
     heading: 'Iron Grid',
     links: [
       { label: 'Contact Us', href: '#' },
-      { label: 'History of IronGrid', href: '#' },
       { label: 'Terms of Service', href: '#' },
       { label: 'Privacy Policy', href: '#' },
       { label: 'Cookies', href: '#' },
@@ -49,7 +48,7 @@ const footerCols: FooterCol[] = [
   },
 ]
 
-const bottomNavLinks = ['Home','Register','Games','Hotels','Schedule','Venue','Policies','News','Merch'] as const
+const bottomNavLinks = ['Home','Register','Games','Schedule','Venue','Policies','Merch'] as const
 
 export default function Footer() {
   return (
@@ -63,7 +62,7 @@ export default function Footer() {
                 <span className="footer__logo-sub">GRID</span>
               </div>
               <p className="footer__tagline">
-                The Midwest's Premier<br />Fighting Game Tournament
+                New Jersey's Premeire<br />Fighting Game Monthly
               </p>
               <div className="footer__social">
                 <a href="#" className="footer__social-link" aria-label="Facebook">
