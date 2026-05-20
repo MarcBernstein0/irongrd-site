@@ -1,17 +1,28 @@
 import './TextPage.css'
 
-export interface TextPageSection {
+export type TextPageSectionImage = {
+  src: string
+  alt: string
+  /** Which side the image sits on. Defaults to 'left' to match the games page layout. */
+  position?: 'left' | 'right' | 'top'
+  /** Optional link to wrap the image in */
+  href?: string
+}
+
+export type TextPageSection = {
   id: string
   heading: string
   content: React.ReactNode
+  /** Optional image displayed alongside the section content */
+  image?: TextPageSectionImage
 }
 
-export interface SidebarLink {
+export type SidebarLink  = {
   label: string
   href: string
 }
 
-export interface TextPageProps {
+export type TextPageProps = {
   title: string
   subtitle?: string
   effectiveDate?: string
@@ -64,19 +75,41 @@ export default function TextPage({
         <div className="text-page__layout">
           {/* Main content */}
           <main className="text-page__main">
-            {sections.map((section, i) => (
-              <section
-                key={section.id}
-                id={section.id}
-                className="text-page__section"
-              >
-                <h2 className="text-page__section-heading">{section.heading}</h2>
-                <div className="text-page__section-body">
-                  {section.content}
+            {sections.map((section, i) => {
+              const img = section.image
+              const imgEl = img ? (
+                <div className={`text-page__section-image text-page__section-image--${img.position ?? 'left'}`}>
+                  {img.href ? (
+                    <a href={img.href} target="_blank" rel="noopener noreferrer">
+                      <img src={img.src} alt={img.alt} />
+                    </a>
+                  ) : (
+                    <img src={img.src} alt={img.alt} />
+                  )}
                 </div>
-                {i < sections.length - 1 && <hr className="text-page__divider" />}
-              </section>
-            ))}
+              ) : null
+
+              return (
+                <section
+                  key={section.id}
+                  id={section.id}
+                  className={`text-page__section${img ? ` text-page__section--has-image text-page__section--image-${img.position ?? 'left'}` : ''}`}
+                >
+                  {img?.position === 'top' && imgEl}
+                  <div className="text-page__section-inner">
+                    {img?.position !== 'top' && img?.position !== 'right' && imgEl}
+                    <div className="text-page__section-text">
+                      <h2 className="text-page__section-heading">{section.heading}</h2>
+                      <div className="text-page__section-body">
+                        {section.content}
+                      </div>
+                    </div>
+                    {img?.position === 'right' && imgEl}
+                  </div>
+                  {i < sections.length - 1 && <hr className="text-page__divider" />}
+                </section>
+              )
+            })}
 
             {effectiveDate && (
               <div className="text-page__effective-date">

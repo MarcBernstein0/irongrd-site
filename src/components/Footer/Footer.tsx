@@ -3,7 +3,8 @@ import './Footer.css'
 
 interface FooterLink {
   label: string
-  to: string
+  href: string
+  external?: boolean
   disabled?: boolean
 }
 
@@ -16,35 +17,35 @@ const footerCols: FooterCol[] = [
   {
     heading: 'Iron Grid',
     links: [
-      { label: 'Contact Us', to: '#' },
-      { label: 'Terms of Service', to: '/terms-of-service' },
-      { label: 'Privacy Policy', to: '#' },
-      { label: 'Cookies', to: '#' },
+      { label: 'Contact Us', href: '#' },
+      { label: 'Terms of Service', href: '/terms-of-service' },
+      { label: 'Privacy Policy', href: '#' },
+      { label: 'Cookies', href: '#' },
     ],
   },
   {
     heading: 'Our Streams',
     links: [
-      { label: 'IronGrid', to: '#' },
-      { label: 'Fever', to: '#' },
-      { label: 'Panda', to: '#' },
-      { label: 'Bifu', to: '#' },
+      { label: 'IronGrid', href: '#', external: true },
+      { label: 'Fever', href: '#', external: true },
+      { label: 'Panda', href: '#', external: true },
+      { label: 'Bifu', href: '#', external: true },
     ],
   },
   {
     heading: 'Get Social',
     links: [
-      { label: '@IronGrid (X)', to: '#' },
+      { label: '@IronGrid (X)', href: '#', external: true },
     ],
   },
   {
     heading: 'Application Forms',
     links: [
-      { label: 'Join Our Team', to: '#' },
-      { label: 'Get on the Mic', to: '#' },
-      { label: 'Run a Side Tournament', to: '#' },
-      { label: 'Sell Your Art', to: '#', disabled: true },
-      { label: 'Custom Request', to: '#' },
+      { label: 'Join Our Team', href: '#' },
+      { label: 'Get on the Mic', href: '#' },
+      { label: 'Run a Side Tournament', href: '#' },
+      { label: 'Sell Your Art', href: '#', disabled: true },
+      { label: 'Custom Request', href: '#' },
     ],
   },
 ]
@@ -84,12 +85,23 @@ export default function Footer() {
                 <ul className="footer__col-links">
                   {col.links.map(link => (
                     <li key={link.label}>
-                      <Link
-                        to={link.to}
-                        className={`footer__col-link ${link.disabled ? 'footer__col-link--disabled' : ''}`}
-                      >
-                        {link.label}
-                      </Link>
+                      {link.external ? (
+                        <a
+                          href={link.href}
+                          target='_blank'
+                          rel='noopener noreferrer'
+                          className={`footer__col-link ${link.disabled ? 'footer__col-link--disabled' : ''}`}
+                        >
+                          {link.label}
+                        </a>
+                      ) : (
+                        <Link
+                          to={link.href}
+                          className={`footer__col-link ${link.disabled ? 'footer__col-link--disabled' : ''}`}
+                        >
+                          {link.label}
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>

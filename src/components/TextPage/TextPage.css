@@ -196,6 +196,77 @@
   margin-bottom: 4px;
 }
 
+/* ── Section image layouts ────────────────── */
+
+/* Left / right: image sits inline beside the text */
+.text-page__section--has-image .text-page__section-inner {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+}
+
+.text-page__section-image {
+  flex-shrink: 0;
+}
+
+.text-page__section-image--left,
+.text-page__section-image--right {
+  width: 200px;
+}
+
+.text-page__section-image--top {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.text-page__section-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  border: 1px solid var(--border-ice);
+  object-fit: cover;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.text-page__section-image a {
+  display: block;
+}
+
+.text-page__section-image a:hover img {
+  border-color: rgba(91, 184, 232, 0.5);
+  box-shadow: 0 0 20px rgba(91, 184, 232, 0.12);
+}
+
+/* Top: image spans full width above the text */
+.text-page__section--image-top .text-page__section-inner {
+  display: block;
+}
+
+.text-page__section--image-top .text-page__section-image--top img {
+  max-height: 260px;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Keeps text flowing naturally when image is present */
+.text-page__section-text {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 600px) {
+  .text-page__section--has-image .text-page__section-inner {
+    flex-direction: column;
+  }
+
+  .text-page__section-image--left,
+  .text-page__section-image--right {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
 /* ── Policy table (used in ToS) ───────────── */
 .policy-table {
   border: 1px solid var(--border-ice);
