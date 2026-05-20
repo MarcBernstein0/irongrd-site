@@ -1,8 +1,9 @@
+import { Link } from 'react-router'
 import './Footer.css'
 
 interface FooterLink {
   label: string
-  href: string
+  to: string
   disabled?: boolean
 }
 
@@ -15,35 +16,35 @@ const footerCols: FooterCol[] = [
   {
     heading: 'Iron Grid',
     links: [
-      { label: 'Contact Us', href: '#' },
-      { label: 'Terms of Service', href: '#' },
-      { label: 'Privacy Policy', href: '#' },
-      { label: 'Cookies', href: '#' },
+      { label: 'Contact Us', to: '#' },
+      { label: 'Terms of Service', to: '/terms-of-service' },
+      { label: 'Privacy Policy', to: '#' },
+      { label: 'Cookies', to: '#' },
     ],
   },
   {
     heading: 'Our Streams',
     links: [
-      { label: 'IronGrid', href: '#' },
-      { label: 'Fever', href: '#' },
-      { label: 'Panda', href: '#' },
-      { label: 'Bifu', href: '#' },
+      { label: 'IronGrid', to: '#' },
+      { label: 'Fever', to: '#' },
+      { label: 'Panda', to: '#' },
+      { label: 'Bifu', to: '#' },
     ],
   },
   {
     heading: 'Get Social',
     links: [
-      { label: '@IronGrid (X)', href: '#' },
+      { label: '@IronGrid (X)', to: '#' },
     ],
   },
   {
     heading: 'Application Forms',
     links: [
-      { label: 'Join Our Team', href: '#' },
-      { label: 'Get on the Mic', href: '#' },
-      { label: 'Run a Side Tournament', href: '#' },
-      { label: 'Sell Your Art', href: '#', disabled: true },
-      { label: 'Custom Request', href: '#' },
+      { label: 'Join Our Team', to: '#' },
+      { label: 'Get on the Mic', to: '#' },
+      { label: 'Run a Side Tournament', to: '#' },
+      { label: 'Sell Your Art', to: '#', disabled: true },
+      { label: 'Custom Request', to: '#' },
     ],
   },
 ]
@@ -83,12 +84,12 @@ export default function Footer() {
                 <ul className="footer__col-links">
                   {col.links.map(link => (
                     <li key={link.label}>
-                      <a
-                        href={link.href}
+                      <Link
+                        to={link.to}
                         className={`footer__col-link ${link.disabled ? 'footer__col-link--disabled' : ''}`}
                       >
                         {link.label}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
