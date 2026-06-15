@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import './HeroCarousel.css'
 
-interface Slide {
+type Slide = {
   id: number
   title: string
   subtitle: string
@@ -16,46 +16,46 @@ const slides: Slide[] = [
   {
     id: 1,
     title: 'IRON GRID',
-    subtitle: 'February 2026 · Westin Chicago-Lombard',
+    subtitle: 'New Jersey\'s Premiere Monthly',
     cta: 'Register Now',
-    ctaHref: '#register',
+    ctaHref: 'https://www.start.gg/irongrid/',
     tag: 'MAIN EVENT',
     gradient: 'linear-gradient(135deg, #0d2a3d 0%, #07151f 50%, #001a2e 100%)',
     accent: '#5bb8e8',
   },
   {
     id: 2,
-    title: 'ARC WORLD TOUR 2025',
-    subtitle: 'Official Tournament Partner',
-    cta: 'Learn More',
-    ctaHref: '#games',
-    tag: 'PARTNERSHIP',
+    title: 'NorthEast KnockOut',
+    subtitle: 'Iron Grid\'s East Cost Regional',
+    cta: 'Register Now',
+    ctaHref: 'https://www.start.gg/northeastko/',
+    tag: 'REGIONAL EVENT',
     gradient: 'linear-gradient(135deg, #1a0d2e 0%, #0d0718 50%, #1a1030 100%)',
     accent: '#b070f0',
   },
   {
     id: 3,
-    title: '2XKO MIXED MODE',
-    subtitle: 'Riot Games · Competitive Play 2026',
-    cta: 'View Details',
-    ctaHref: '#games',
-    tag: 'FEATURED GAME',
+    title: 'FIGHT NIGHT LIVE',
+    subtitle: 'Iron Grid\'s Premiere NYC BI-Monthly Series',
+    cta: 'Register Now',
+    ctaHref: 'https://start.gg/fnlnyc/',
+    tag: 'NYC EVENT',
     gradient: 'linear-gradient(135deg, #1a2500 0%, #0d1800 50%, #0a2000 100%)',
     accent: '#80d840',
   },
   {
     id: 4,
-    title: 'HOTEL PACKAGES',
-    subtitle: 'Official Room Block · Book Now',
-    cta: 'Hotel Info',
-    ctaHref: '#hotels',
-    tag: 'ACCOMMODATIONS',
+    title: 'FIGHT NIGHT LIVE 3D',
+    subtitle: 'Iron Grid\'s Premiere NYC BI-Monthly 3D Series',
+    cta: 'Register Now',
+    ctaHref: 'https://start.gg/fnl3d',
+    tag: 'NYC EVENT',
     gradient: 'linear-gradient(135deg, #1a1a00 0%, #201400 50%, #180f00 100%)',
     accent: '#f0c040',
   },
 ]
 
-interface ParticleStyle {
+type ParticleStyle = {
   '--x': string
   '--y': string
   '--delay': string
