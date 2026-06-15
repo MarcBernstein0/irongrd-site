@@ -1,14 +1,14 @@
 import { Link } from 'react-router'
 import './Footer.css'
 
-interface FooterLink {
+type FooterLink = {
   label: string
   href: string
   external?: boolean
   disabled?: boolean
 }
 
-interface FooterCol {
+type FooterCol = {
   heading: string
   links: FooterLink[]
 }
@@ -50,7 +50,38 @@ const footerCols: FooterCol[] = [
   },
 ]
 
-const bottomNavLinks = ['Home','Register','Games','Schedule','Venue','Policies','Merch'] as const
+const bottomNavLinks: FooterLink[] = [
+  {
+    label: 'Home',
+    href: '/'
+  },
+  {
+    label: 'Register',
+    href: 'https://www.start.gg/irongrid/',
+    external: true
+  },
+  { 
+    label: "Games", 
+    href: "/games" 
+  },
+  {
+    label: 'Schedule',
+    href: '#Schedule'
+  },
+  {
+    label: 'Venue',
+    href: '#Venue'
+  },
+  {
+    label: 'Policies',
+    href: '#Policies'
+  },
+  {
+    label: 'Merch',
+    href: '#Merch'
+  },
+]
+// const bottomNavLinks = ['Home','Register','Games','Schedule','Venue','Policies','Merch'] as const
 
 export default function Footer() {
   return (
@@ -117,8 +148,25 @@ export default function Footer() {
             © {new Date().getFullYear()} IRONGRID. All rights reserved.
           </p>
           <nav className="footer__bottom-nav">
-            {bottomNavLinks.map(label => (
-              <a key={label} href="#" className="footer__bottom-link">{label}</a>
+            {bottomNavLinks.map(link => (
+              link.external ? (
+                <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                className="footer__bottom-link"
+              >
+                {link.label}
+              </a>
+              ) : (
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  className="footer__bottom-link"
+                >
+                  {link.label}
+                </Link>
+              )
             ))}
           </nav>
         </div>
